@@ -20,7 +20,7 @@ For using Colab notebooks with a robot, you must connect to [a local runtime](ht
 
 ### Simulators
 
-* Webots
+* [Webots](Webots/README.md)
 
 ### Robots
 
