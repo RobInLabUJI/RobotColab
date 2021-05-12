@@ -1,13 +1,25 @@
 from controller import Robot
 import numpy as np
+import threading
 
 __basicTimeStep__ = 10
+
+def step(ms=__basicTimeStep__):
+  global __robot__
+  try:
+    while __robot__.step(ms) != -1:
+      pass
+  except NameError:
+    pass
 
 class PioneerRobot:
   def __init__(self):
     if not '__robot__' in globals():
       global __robot__
       __robot__ = Robot()
+      global __step__
+      __step__ = threading.Thread(target=step, args=(10,))
+      __step__.start()
     self.leftMotor = __robot__.getDevice("left wheel")
     self.leftMotor.setPosition(float('inf'))
     self.leftMotor.setVelocity(0)
@@ -62,10 +74,10 @@ class PioneerGripper:
     self.__leftFingerMotor__.setPosition(0)
     self.__rightFingerMotor__.setPosition(0)
 
-def step(ms=__basicTimeStep__):
-  global __robot__
-  try:
-    __robot__.step(ms)
-  except NameError:
-    pass
+# def step(ms=__basicTimeStep__):
+#   global __robot__
+#   try:
+#     __robot__.step(ms)
+#   except NameError:
+#     pass
 
