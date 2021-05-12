@@ -25,6 +25,7 @@ DEF PIONEER_3DX Pioneer3dx {
   translation -0.613659 0.0975 0.0464224
   rotation 0 -1 0 5.12323
   controller "<extern>"
+  synchronization FALSE
 }
 CardboardBox {
   translation -0.201269 0.3 -4.94642

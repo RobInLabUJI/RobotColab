@@ -29,6 +29,7 @@ DEF PIONEER_3DX Pioneer3dx {
   translation -0.681137 0.0975 -0.0495909
   rotation 0 -1 0 5.12323
   controller "<extern>"
+  synchronization FALSE
   extensionSlot [
     Kinect {
       translation 0 0.15 0

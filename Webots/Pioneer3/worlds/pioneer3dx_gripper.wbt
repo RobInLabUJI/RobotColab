@@ -28,6 +28,7 @@ DEF PIONEER_3DX Pioneer3dx {
   translation 0.48905 0.0975 0.1983
   rotation 0 -1 0 5.08581
   controller "<extern>"
+  synchronization FALSE
   extensionSlot [
     DEF GRIPPER_BASE Pioneer3Gripper {
       translation 0 0.026 -0.135
