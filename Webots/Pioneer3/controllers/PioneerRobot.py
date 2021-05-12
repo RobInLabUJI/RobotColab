@@ -63,6 +63,9 @@ class PioneerGripper:
     self.__liftMotor__ = __robot__.getDevice("lift motor")
     self.__leftFingerMotor__ = __robot__.getDevice("left finger motor")
     self.__rightFingerMotor__ = __robot__.getDevice("right finger motor")
+    self.__leftFingerMotor__.setVelocity(0.1)
+    self.__rightFingerMotor__.setVelocity(0.1)
+    self.__liftMotor__.setVelocity(0.1)
   def up(self):
     self.__liftMotor__.setPosition(0)
   def down(self):
