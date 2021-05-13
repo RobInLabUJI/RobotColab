@@ -5,12 +5,13 @@ import threading
 import IPython.display
 import PIL.Image
 
-def display(image):
+def display(image, size=(600,400)):
   if image.dtype == np.dtype('uint8'):
-    IPython.display.display(PIL.Image.fromarray(image))
+    PILimage = PIL.Image.fromarray(image)
   elif image.dtype == np.dtype('float64'):
     intimage = np.round(image/np.max(image)*255).astype('uint8')
-    IPython.display.display(PIL.Image.fromarray(intimage))
+    PILimage = PIL.Image.fromarray(intimage)
+  IPython.display.display(PILimage.resize(size))
 
 __basicTimeStep__ = 10
 
