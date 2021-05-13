@@ -25,7 +25,10 @@ def step(ms=__basicTimeStep__):
     pass
 
 class PioneerRobot:
+  """Proxy to Pioneer3 robot in Webots."""
+
   def __init__(self):
+    """Create proxy and enable devices."""
     if not '__robot__' in globals():
       global __robot__
       __robot__ = Robot()
@@ -49,20 +52,27 @@ class PioneerRobot:
       self.sonar.append(sonarDevice)
 
 class PioneerKinect:
+  """Proxy to Kinect camera in Webots."""
+
   def __init__(self):
+    """Create proxy and enable devices."""
     global __robot__
     self.__kinectColor__ = __robot__.getDevice("kinect color")
     self.__kinectColor__.enable(__basicTimeStep__*4)
     self.__kinectRange__ = __robot__.getDevice("kinect range")
     self.__kinectRange__.enable(__basicTimeStep__*4)
     self.tiltMotor = __robot__.getDevice("tilt motor")
+
   def getColorImage(self):
+    """Return the color image."""
     data = self.__kinectColor__.getImage()
     height = self.__kinectColor__.getHeight()
     width = self.__kinectColor__.getWidth()
     image = np.frombuffer(data, np.uint8).reshape((height, width, 4))
     return image[:,:,[2,1,0]]
+
   def getRangeImage(self):
+    """Return the range image."""
     data = self.__kinectRange__.getRangeImage()
     height = self.__kinectRange__.getHeight()
     width = self.__kinectRange__.getWidth()
@@ -70,7 +80,10 @@ class PioneerKinect:
     return image
 
 class PioneerGripper:
+  """Proxy to Pioneer3 gripper in Webots."""
+
   def __init__(self):
+    """Create proxy and enable motors."""
     global __robot__
     self.__liftMotor__ = __robot__.getDevice("lift motor")
     self.__leftFingerMotor__ = __robot__.getDevice("left finger motor")
@@ -78,21 +91,22 @@ class PioneerGripper:
     self.__leftFingerMotor__.setVelocity(0.1)
     self.__rightFingerMotor__.setVelocity(0.1)
     self.__liftMotor__.setVelocity(0.1)
+
   def up(self):
+    """Move gripper up."""
     self.__liftMotor__.setPosition(0)
+
   def down(self):
+    """Move gripper down."""
     self.__liftMotor__.setPosition(0.05)
+
   def open(self):
+    """Open gripper."""
     self.__leftFingerMotor__.setPosition(0.1)
     self.__rightFingerMotor__.setPosition(0.1)
+
   def close(self):
+    """Close gripper."""
     self.__leftFingerMotor__.setPosition(0)
     self.__rightFingerMotor__.setPosition(0)
-
-# def step(ms=__basicTimeStep__):
-#   global __robot__
-#   try:
-#     __robot__.step(ms)
-#   except NameError:
-#     pass
 
