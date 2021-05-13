@@ -5,7 +5,8 @@ import threading
 import IPython.display
 import PIL.Image
 
-def display(image, size=(600,400)):
+def display(image, size=(300,200)):
+  """Display the image in the notebook."""
   if image.dtype == np.dtype('uint8'):
     PILimage = PIL.Image.fromarray(image)
   elif image.dtype == np.dtype('float64'):
