@@ -2,6 +2,16 @@ from controller import Robot
 import numpy as np
 import threading
 
+import IPython.display
+import PIL.Image
+
+def display(image):
+  if image.dtype == np.dtype('uint8'):
+    IPython.display.display(PIL.Image.fromarray(image))
+  elif image.dtype == np.dtype('float64'):
+    intimage = np.round(image/np.max(image)*255).astype('uint8')
+    IPython.display.display(PIL.Image.fromarray(intimage))
+
 __basicTimeStep__ = 10
 
 def step(ms=__basicTimeStep__):
