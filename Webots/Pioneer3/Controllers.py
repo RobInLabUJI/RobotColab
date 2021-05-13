@@ -28,7 +28,13 @@ class PioneerRobot:
   """Proxy to Pioneer3 robot in Webots."""
 
   def __init__(self):
-    """Create proxy and enable devices."""
+    """Create proxy and enable devices:
+       * leftMotor
+       * rightMotor
+       * leftWheelSensor
+       * rightWheelSensor
+       * sonar
+    """
     if not '__robot__' in globals():
       global __robot__
       __robot__ = Robot()
@@ -36,16 +42,21 @@ class PioneerRobot:
       __step__ = threading.Thread(target=step, args=(10,))
       __step__.start()
     self.leftMotor = __robot__.getDevice("left wheel")
+    """Motor of left wheel - instance variable"""
     self.leftMotor.setPosition(float('inf'))
     self.leftMotor.setVelocity(0)
     self.rightMotor = __robot__.getDevice("right wheel")
+    """Motor of right wheel - instance variable"""
     self.rightMotor.setPosition(float('inf'))
     self.rightMotor.setVelocity(0)
     self.leftWheelSensor = __robot__.getDevice("left wheel sensor")
+    """Encoder of left wheel - instance variable"""
     self.leftWheelSensor.enable(__basicTimeStep__)
     self.rightWheelSensor = __robot__.getDevice("right wheel sensor")
+    """Encoder of right wheel - instance variable"""
     self.rightWheelSensor.enable(__basicTimeStep__)
     self.sonar = []
+    """List of distance sensors - instance variable"""
     for i in range(16):
       sonarDevice = __robot__.getDevice("so"+str(i))
       sonarDevice.enable(__basicTimeStep__)
