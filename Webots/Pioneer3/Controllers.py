@@ -1,6 +1,7 @@
 from controller import Robot
 import numpy as np
 import threading
+import time
 
 import IPython.display
 import PIL.Image
@@ -23,6 +24,13 @@ def step(ms=__basicTimeStep__):
       pass
   except NameError:
     pass
+
+def sleep(t):
+  """Sleep t seconds in simulated time."""
+  global __robot__
+  start = __robot__.getTime()
+  while __robot__.getTime()-start < t:
+    time.sleep(__basicTimeStep__/1000)
 
 class PioneerRobot:
   """Proxy to Pioneer3 robot in Webots."""
