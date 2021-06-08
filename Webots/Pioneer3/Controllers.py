@@ -81,6 +81,14 @@ class PioneerRobot:
     px, py, pz = self.__gps__.getValues()
     return pz, px, theta
 
+  def move(self, v, w):
+    r = 0.1953 / 2
+    L = 0.33
+    wl = (2*v - L*w) / (2*r)
+    wr = (2*v + L*w) / (2*r)
+    self.leftMotor.setVelocity(wl)
+    self.rightMotor.setVelocity(wr)
+
 class PioneerKinect:
   """Proxy to Kinect camera in Webots."""
 
