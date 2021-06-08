@@ -2,6 +2,7 @@ from controller import Robot
 import numpy as np
 import threading
 import time
+import math
 
 import IPython.display
 import PIL.Image
@@ -69,6 +70,16 @@ class PioneerRobot:
       sonarDevice = __robot__.getDevice("so"+str(i))
       sonarDevice.enable(__basicTimeStep__)
       self.sonar.append(sonarDevice)
+    self.__gps__ = __robot__.getDevice("gps")
+    self.__gps__.enable(__basicTimeStep__)
+    self.__compass__ = __robot__.getDevice("compass")
+    self.__compass__.enable(__basicTimeStep__)
+    
+  def getPose(self):
+    vx, vy, vz = self.__compass__.getValues()
+    theta = math.atan2(vz, vx)
+    px, py, pz = self.__gps__.getValues()
+    return pz, px, theta
 
 class PioneerKinect:
   """Proxy to Kinect camera in Webots."""
