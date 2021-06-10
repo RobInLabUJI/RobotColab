@@ -74,6 +74,8 @@ class PioneerRobot:
     self.__gps__.enable(__basicTimeStep__)
     self.__compass__ = __robot__.getDevice("compass")
     self.__compass__.enable(__basicTimeStep__)
+    self.laser = __robot__.getDevice("Hokuyo URG-04LX")
+    self.laser.enable(__basicTimeStep__)
     
   def getPose(self):
     vx, vy, vz = self.__compass__.getValues()
