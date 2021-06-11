@@ -68,16 +68,22 @@ class PioneerRobot:
     """List of distance sensors - instance variable"""
     for i in range(16):
       sonarDevice = __robot__.getDevice("so"+str(i))
-      sonarDevice.enable(__basicTimeStep__)
-      self.sonar.append(sonarDevice)
+      if not sonarDevice is None:
+        sonarDevice.enable(__basicTimeStep__)
+        self.sonar.append(sonarDevice)
     self.__gps__ = __robot__.getDevice("gps")
-    self.__gps__.enable(__basicTimeStep__)
+    if not self.__gps__ is None:
+      self.__gps__.enable(__basicTimeStep__)
     self.__compass__ = __robot__.getDevice("compass")
-    self.__compass__.enable(__basicTimeStep__)
+    if not self.__compass__ is None:
+      self.__compass__.enable(__basicTimeStep__)
     self.laser = __robot__.getDevice("Hokuyo URG-04LX")
-    self.laser.enable(__basicTimeStep__)
+    if not self.laser is None:
+      self.laser.enable(__basicTimeStep__)
     
   def getPose(self):
+    if self.__compass__ is None or self.__gps__ is None:
+      return None
     vx, vy, vz = self.__compass__.getValues()
     theta = math.atan2(vz, vx)
     px, py, pz = self.__gps__.getValues()
