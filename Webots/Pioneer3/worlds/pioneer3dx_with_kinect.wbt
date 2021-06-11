@@ -26,20 +26,30 @@ RectangleArena {
   wallHeight 0.4
 }
 DEF PIONEER_3DX Pioneer3dx {
-  translation -0.681137 0.0975 -0.0495909
-  rotation 0 -1 0 5.12323
+  hidden position_0_0 0.00672786652482311
+  hidden position_0_1 -1.8166585168537472e-07
+  hidden position_0_2 6.521606040180261e-07
+  hidden rotation_1 0 1 0 0.006727866524819052
+  hidden position_1_0 -0.005111854968597302
+  hidden rotation_2 -1 0 0 0.005111854968633383
+  hidden rotation_4 1 0 0 1.812804499357409e-07
+  hidden rotation_9 -0.9999999999999999 0 0 6.522556730580147e-07
+  hidden position_28_0 -0.20000000000000004
+  hidden rotation_29 -0.9999999999999999 0 0 0.20000000000000112
+  translation -0.6798468204087413 0.09668370753449233 -0.0499091592081498
+  rotation -0.025736943936352563 -0.9995454828619986 0.015698324974066796 -1.09585406210654
   controller "<extern>"
   synchronization FALSE
   extensionSlot [
     Kinect {
-      translation 0 0.15 0
+      translation 0 0.15 -0.1
       width 150
       height 100
     }
   ]
 }
 CardboardBox {
-  translation -0.36307 0.3 -2.01063
+  translation 0.66307 0.3 -2.01063
 }
 CardboardBox {
   translation -0.382041 0.3 2.17641
@@ -63,4 +73,100 @@ WoodenBox {
 WoodenBox {
   translation -2.77958 0.3 -3.05296
   name "wooden box(3)"
+}
+SolidBox {
+  translation -2 0 0
+  name "line1"
+  size 1 0.001 0.1
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation -2.55 0 1.7
+  name "line2"
+  size 0.1 0.001 3.5
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation -0.5 0 3.4
+  name "line3"
+  size 4 0.001 0.1
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation 1.55 0 1.95
+  name "line4"
+  size 0.1 0.001 3
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation 2.1 0 0.5
+  name "line5"
+  size 1 0.001 0.1
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation 2.65 0 -0.7
+  name "line6"
+  size 0.1 0.001 2.5
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation 0.6 0 -1.9
+  name "line7"
+  size 4 0.001 0.1
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation -1.45 0 -0.95
+  name "line8"
+  size 0.1 0.001 2
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
 }
