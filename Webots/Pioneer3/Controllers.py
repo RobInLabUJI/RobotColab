@@ -151,8 +151,8 @@ class PioneerGripper:
     self.__leftFingerMotor__.setPosition(0.1)
     self.__rightFingerMotor__.setPosition(0.1)
 
-  def close(self):
+  def close(self, position=0.065):
     """Close gripper."""
-    self.__leftFingerMotor__.setPosition(0)
-    self.__rightFingerMotor__.setPosition(0)
+    self.__leftFingerMotor__.setPosition(position)
+    self.__rightFingerMotor__.setPosition(position)
 
