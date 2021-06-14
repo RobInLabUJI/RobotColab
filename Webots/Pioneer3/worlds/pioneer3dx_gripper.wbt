@@ -12,7 +12,7 @@ WorldInfo {
 Viewpoint {
   fieldOfView 0.660595
   orientation -0.03335558634190153 -0.9914415940348108 -0.12621794831758765 2.81354
-  position -0.408731 0.90769 -2.30036
+  position -0.4065501318316931 0.9067619980019784 -2.2995054768516767
   follow "Pioneer 3-DX"
 }
 TexturedBackground {
@@ -25,127 +25,37 @@ RectangleArena {
   wallHeight 0.4
 }
 DEF PIONEER_3DX Pioneer3dx {
-  translation 0.48905 0.0975 0.1983
-  rotation 0 -1 0 5.08581
+  hidden position_0_0 -1.2686739329179265e-10
+  hidden position_0_1 -9.302458998741251e-12
+  hidden position_0_2 -9.301306403125616e-12
+  hidden translation_1 1.6345188654658845e-12 -0.0011905068030913513 0.19184390265471452
+  hidden rotation_1 -0.999985697636621 -0.005340384346666004 -0.00029123397854395014 4.2146848510894035e-08
+  hidden position_1_0 -0.02878831161779391
+  hidden rotation_2 -1 0 0 0.028788311617799725
+  hidden translation_4 -0.16499999998950687 -9.707520542506257e-05 -5.314459838131478e-07
+  hidden translation_9 0.16503200001049106 -9.707882197954901e-05 -5.313425541038314e-07
+  hidden position_28_0 3.830700789646182e-12
+  hidden position_32_0 1.58565889084105e-05
+  hidden translation_33 -2.2792878695554464e-12 -1.5965993670155897e-05 -0.042499870777016835
+  hidden rotation_33 -0.9999999999998427 5.571489671935981e-07 -6.82150801762981e-08 5.039503733571412e-07
+  hidden position_33_0 8.833006646779515e-13
+  hidden position_33_1 -3.1007254457889774e-13
+  translation 0.49156414512843993 0.0962922334622415 0.19928511878603547
+  rotation -0.02026680149463517 -0.9996990098347546 0.013825573861080308 -1.197655620625193
   controller "<extern>"
   synchronization FALSE
   extensionSlot [
+    Kinect {
+      translation 0 0.15 -0.14
+      rotation 1 0 0 -0.261795307179586
+    }
     DEF GRIPPER_BASE Pioneer3Gripper {
       translation 0 0.026 -0.135
     }
   ]
 }
 Ball {
-  translation 0 0.082 0
+  translation 0 0.07997302250000003 0
   color 0.0784314 0.137255 1
-}
-DEF RED_TEE Solid {
-  translation -0.0376035 0 -0.618808
-  children [
-    Group {
-      children [
-        DEF PITCH_PLATE Transform {
-          translation 0 0.0465 0
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.8 0.8 0.8
-                roughness 1
-                metalness 0
-              }
-              geometry Box {
-                size 0.045 0.0025 0.045
-              }
-            }
-          ]
-        }
-        Transform {
-          translation 0 0.02 0
-          children [
-            Shape {
-              appearance DEF PITCH_APPEARANCE PBRAppearance {
-                baseColor 0.917647 0.486275 0.478431
-                roughness 1
-                metalness 0
-              }
-              geometry Cylinder {
-                height 0.041
-                radius 0.01
-              }
-            }
-          ]
-        }
-        Transform {
-          translation 0 0.028 0
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance USE PITCH_APPEARANCE
-              geometry Cone {
-                bottomRadius 0.035
-                height 0.04
-                subdivision 24
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
-  boundingObject USE PITCH_PLATE
-}
-DEF BLUE_TEE Solid {
-  children [
-    Group {
-      children [
-        DEF PITCH_PLATE Transform {
-          translation 0 0.0465 0
-          children [
-            Shape {
-              appearance PBRAppearance {
-                baseColor 0.8 0.8 0.8
-                roughness 1
-                metalness 0
-              }
-              geometry Box {
-                size 0.045 0.0025 0.045
-              }
-            }
-          ]
-        }
-        Transform {
-          translation 0 0.02 0
-          children [
-            Shape {
-              appearance DEF PITCH_APPEARANCE PBRAppearance {
-                baseColor 0.698039 0.760784 0.945098
-                roughness 1
-                metalness 0
-              }
-              geometry Cylinder {
-                height 0.041
-                radius 0.01
-              }
-            }
-          ]
-        }
-        Transform {
-          translation 0 0.028 0
-          rotation 0 0 1 3.14159
-          children [
-            Shape {
-              appearance USE PITCH_APPEARANCE
-              geometry Cone {
-                bottomRadius 0.035
-                height 0.04
-                subdivision 24
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
-  name "solid(1)"
-  boundingObject USE PITCH_PLATE
+  radius 0.08
 }
