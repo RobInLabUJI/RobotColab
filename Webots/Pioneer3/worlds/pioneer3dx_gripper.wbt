@@ -59,3 +59,39 @@ Ball {
   color 0.0784314 0.137255 1
   radius 0.08
 }
+SolidBox {
+  translation -1.75 0 1.75
+  name "target"
+  size 0.5 0.001 0.5
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation -1.5 0.005 1.75
+  name "border0"
+  size 0.01 0.01 0.5
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject TRUE
+  castShadows TRUE
+}
+SolidBox {
+  translation -1.75 0.005 1.5
+  name "border1"
+  size 0.5 0.01 0.01
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject TRUE
+  castShadows TRUE
+}
