@@ -82,7 +82,7 @@ class PioneerRobot:
       self.laser.enable(__basicTimeStep__)
     
   def getPose(self):
-  """Return pose of (x,y,theta) the robot."""
+    """Return pose of (x,y,theta) the robot."""
     if self.__compass__ is None or self.__gps__ is None:
       return None
     vx, vy, vz = self.__compass__.getValues()
@@ -91,7 +91,7 @@ class PioneerRobot:
     return pz, px, theta
 
   def move(self, v, w):
-  """Set linear and angular velocities."""
+    """Set linear and angular velocities."""
     r = 0.1953 / 2
     L = 0.33
     wl = (2*v - L*w) / (2*r)
