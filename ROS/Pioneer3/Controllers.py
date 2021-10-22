@@ -13,7 +13,7 @@ class PioneerRobot:
   def __init__(self):
     rospy.init_node('controller', anonymous=True)
     self.pub = rospy.Publisher('cmd_vel', geometry_msgs.msg.Twist, queue_size=10)
-    self.odomSub = rospy.Subscriber('odom', nav_msgs.msg.Odometry, self.odomCallback)
+    self.odomSub = rospy.Subscriber('pose', nav_msgs.msg.Odometry, self.odomCallback)
 
   def move(self, v, w):
     twist = geometry_msgs.msg.Twist()
