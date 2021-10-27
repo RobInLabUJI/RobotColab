@@ -24,7 +24,7 @@ class TurtleBot3Robot:
     self.pub.publish(twist)
 
   def scanCallback(self, data):
-    self.scan = data
+    self.scan = data.ranges
 
   def odomCallback(self, data):
     self.x = data.pose.pose.position.x
