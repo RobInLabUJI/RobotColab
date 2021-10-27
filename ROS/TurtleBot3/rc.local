@@ -12,5 +12,6 @@
 # By default this script does nothing.
 
 su ubuntu -c '/home/ubuntu/RobotColab/ROS/TurtleBot3/launch-turtlebot3.sh'
+su ubuntu -c '/home/ubuntu/RobotColab/ROS/launch-jupyter.sh'
 
 exit 0
