@@ -4,6 +4,8 @@ import geometry_msgs.msg
 import nav_msgs.msg
 import sensor_msgs.msg
 
+import numpy as np
+
 def sleep(t):
   """Sleep t seconds in ROS time."""
   rospy.sleep(t)
@@ -16,6 +18,9 @@ class TurtleBot3Robot:
     self.pub = rospy.Publisher('/cmd_vel', geometry_msgs.msg.Twist, queue_size=10)
     self.odomSub = rospy.Subscriber('odom', nav_msgs.msg.Odometry, self.odomCallback)
     self.scanSub = rospy.Subscriber('scan', sensor_msgs.msg.LaserScan, self.scanCallback)
+    a = np.linspace(0,360,360,False)*np.pi/180
+    self.c = np.cos(a)
+    self.s = np.sin(a)
 
   def move(self, v, w):
     twist = geometry_msgs.msg.Twist()
@@ -38,4 +43,10 @@ class TurtleBot3Robot:
 
   def getScan(self):
       return self.scan
+
+  def getPointCloud(self):
+      d = self.scan
+      x = np.multiply(d,self.c)
+      y = np.multiply(d,self.s)
+      return x, y
 
