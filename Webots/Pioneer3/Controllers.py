@@ -80,6 +80,7 @@ class PioneerRobot:
     self.laser = __robot__.getDevice("Hokuyo URG-04LX")
     if not self.laser is None:
       self.laser.enable(__basicTimeStep__)
+    self.kinect = PioneerKinect()
     
   def getPose(self):
     """Return pose of (x,y,theta) the robot."""
@@ -106,9 +107,11 @@ class PioneerKinect:
     """Create proxy and enable devices."""
     global __robot__
     self.__kinectColor__ = __robot__.getDevice("kinect color")
-    self.__kinectColor__.enable(__basicTimeStep__*4)
+    if not self.__kinectColor__ is None:
+      self.__kinectColor__.enable(__basicTimeStep__*4)
     self.__kinectRange__ = __robot__.getDevice("kinect range")
-    self.__kinectRange__.enable(__basicTimeStep__*4)
+    if not self.__kinectRange__ is None:
+      self.__kinectRange__.enable(__basicTimeStep__*4)
     self.tiltMotor = __robot__.getDevice("tilt motor")
 
   def getColorImage(self):
