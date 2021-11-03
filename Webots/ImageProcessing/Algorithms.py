@@ -51,6 +51,13 @@ def colorFilter(image, color):
   lower_hsv = np.array([LOW_H, LOW_S, LOW_V])
   upper_hsv = np.array([HIGH_H, HIGH_S, HIGH_V])
   mask = cv2.inRange(hsv, lower_hsv, upper_hsv)
+  if color == Color.RED:
+    LOW_H = 170
+    HIGH_H = 180
+    lower_hsv = np.array([LOW_H, LOW_S, LOW_V])
+    upper_hsv = np.array([HIGH_H, HIGH_S, HIGH_V])
+    mask2 = cv2.inRange(hsv, lower_hsv, upper_hsv)
+    mask = cv2.bitwise_or(mask, mask2)
   return mask
 
 def blobDetector(mask):
