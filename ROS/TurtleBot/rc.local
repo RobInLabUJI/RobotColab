@@ -11,7 +11,7 @@
 #
 # By default this script does nothing.
 
-su pi -c '/home/pi/RobotColab/update.sh'
+su pi -c '/home/pi/RobotColab/ROS/TurtleBot/update.sh'
 su pi -c '/home/pi/RobotColab/ROS/TurtleBot/launch-turtlebot.sh'
 su pi -c '/home/pi/RobotColab/ROS/TurtleBot/launch-jupyter.sh'
 
