@@ -13,6 +13,7 @@
 
 su pi -c '/home/pi/RobotColab/ROS/TurtleBot/update.sh'
 su pi -c '/home/pi/RobotColab/ROS/TurtleBot/launch-jupyter.sh'
+su pi -c '/home/pi/RobotColab/ROS/TurtleBot/launch-astra.sh'
 su pi -c '/home/pi/RobotColab/ROS/TurtleBot/launch-turtlebot.sh'
 
 exit 0
