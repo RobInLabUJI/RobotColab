@@ -11,8 +11,8 @@
 #
 # By default this script does nothing.
 
-su ubuntu -c '/home/ubuntu/RobotColab/update.sh'
-su ubuntu -c '/home/ubuntu/RobotColab/ROS/TurtleBot/launch-turtlebot.sh'
-su ubuntu -c '/home/ubuntu/RobotColab/ROS/launch-jupyter.sh'
+su ubuntu -c '/home/pi/RobotColab/update.sh'
+su ubuntu -c '/home/pi/RobotColab/ROS/TurtleBot/launch-turtlebot.sh'
+su ubuntu -c '/home/pi/RobotColab/ROS/launch-jupyter.sh'
 
 exit 0
