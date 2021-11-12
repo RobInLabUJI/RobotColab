@@ -18,6 +18,7 @@ class PioneerRobot:
     self.odomSub = rospy.Subscriber('pose', nav_msgs.msg.Odometry, self.odomCallback)
     self.bridge = CvBridge()
     self.imgSub = rospy.Subscriber('/camera/rgb/image_raw', sensor_msgs.msg.Image, self.imgCallback)
+    self.imgSb2 = rospy.Subscriber('/usb_cam/image_raw', sensor_msgs.msg.Image, self.imgCallback)
 
   def move(self, v, w):
     twist = geometry_msgs.msg.Twist()
