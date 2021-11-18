@@ -3,6 +3,7 @@ import rospy
 import geometry_msgs.msg
 import nav_msgs.msg
 import sensor_msgs.msg
+from cv_bridge import CvBridge, CvBridgeError
 
 import numpy as np
 
@@ -21,6 +22,8 @@ class TurtleBot3Robot:
     a = np.linspace(0,360,360,False)*np.pi/180
     self.c = np.cos(a)
     self.s = np.sin(a)
+    self.bridge = CvBridge()
+    self.imgSub = rospy.Subscriber('/usb_cam/image_raw', sensor_msgs.msg.Image, self.imgCallback)
 
   def move(self, v, w):
     twist = geometry_msgs.msg.Twist()
@@ -36,7 +39,13 @@ class TurtleBot3Robot:
     self.y = data.pose.pose.position.y
     self.w = data.pose.pose.orientation.w
     self.z = data.pose.pose.orientation.z
-    
+
+  def imgCallback(self, data):
+    try:
+      self.cv_image = self.bridge.imgmsg_to_cv2(data, "rgb8")
+    except CvBridgeError as e:
+      pass
+
   def getPose(self):
     halfTheta = math.atan2(self.z, self.w)
     return self.x, self.y, 2 * halfTheta
@@ -49,4 +58,7 @@ class TurtleBot3Robot:
       x = np.multiply(d,self.c)
       y = np.multiply(d,self.s)
       return x, y
+
+  def getImage(self):
+    return self.cv_image
 
