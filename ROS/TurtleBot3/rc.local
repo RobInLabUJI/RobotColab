@@ -14,5 +14,6 @@
 su ubuntu -c '/home/ubuntu/RobotColab/update.sh'
 su ubuntu -c '/home/ubuntu/RobotColab/ROS/TurtleBot3/launch-turtlebot3.sh'
 su ubuntu -c '/home/ubuntu/RobotColab/ROS/launch-jupyter.sh'
+su ubuntu -c '/home/ubuntu/RobotColab/ROS/TurtleBot3/launch-usb-cam.sh'
 
 exit 0
