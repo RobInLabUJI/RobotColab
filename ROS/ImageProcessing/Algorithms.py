@@ -11,7 +11,7 @@ class Color(Enum):
   CYAN = 4
   BLUE = 5
   MAGENTA = 6
-
+  ORANGE = 7
 
 def display(image, size=(300,200)):
   """Display the image in the notebook."""
@@ -22,11 +22,7 @@ def display(image, size=(300,200)):
     PILimage = PIL.Image.fromarray(intimage)
   IPython.display.display(PILimage.resize(size))
 
-def colorFilter(image, color):
-  LOW_S = 160
-  HIGH_S = 255
-  LOW_V = 160
-  HIGH_V = 255
+def colorFilter(image, color, LOW_S=80, LOW_V=80, HIGH_S=255, HIGH_V=255):
   hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
   if color == Color.RED:
     LOW_H = 0
@@ -46,6 +42,9 @@ def colorFilter(image, color):
   elif color == Color.MAGENTA:
     LOW_H = 140
     HIGH_H = 160
+  elif color == Color.ORANGE:
+    LOW_H = 5
+    HIGH_H = 25
   else:
     return None
   lower_hsv = np.array([LOW_H, LOW_S, LOW_V])
