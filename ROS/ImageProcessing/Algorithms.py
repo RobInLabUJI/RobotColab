@@ -22,9 +22,11 @@ def display(image, size=(300,200)):
     PILimage = PIL.Image.fromarray(intimage)
   IPython.display.display(PILimage.resize(size))
 
-def colorFilter(image, color, LOW_S=80, LOW_V=80, HIGH_S=255, HIGH_V=255):
+def colorFilter(image, color, LOW_S=80, LOW_V=80, HIGH_S=255, HIGH_V=255, LOW_H=-1, HIGH_H=-1):
   hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
-  if color == Color.RED:
+  if LOW_H>=0 and HIGH_H>=0:
+    pass
+  elif color == Color.RED:
     LOW_H = 0
     HIGH_H = 10
   elif color == Color.YELLOW:
@@ -37,8 +39,8 @@ def colorFilter(image, color, LOW_S=80, LOW_V=80, HIGH_S=255, HIGH_V=255):
     LOW_H = 80
     HIGH_H = 100
   elif color == Color.BLUE:
-    LOW_H = 110
-    HIGH_H = 130
+    LOW_H = 100
+    HIGH_H = 120
   elif color == Color.MAGENTA:
     LOW_H = 140
     HIGH_H = 160
