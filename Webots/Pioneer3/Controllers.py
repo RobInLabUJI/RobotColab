@@ -14,13 +14,6 @@ def step(ms=__basicTimeStep__):
   except NameError:
     pass
 
-def sleep(t):
-  """Sleep t seconds in simulated time."""
-  global __robot__
-  start = __robot__.getTime()
-  while __robot__.getTime()-start < t:
-    time.sleep(__basicTimeStep__/1000)
-
 class PioneerRobot:
   """Proxy to Pioneer3 robot in Webots."""
 
@@ -79,6 +72,14 @@ class PioneerRobot:
     px, py, pz = self.__gps__.getValues()
     return pz, px, theta
 
+  def getEncoders(self):
+    return (self.leftWheelSensor.getValue(), self.rightWheelSensor.getValue())
+    
+  def setSpeed(self, wl, wr):
+    """Set wheel velocities."""
+    self.leftMotor.setVelocity(wl)
+    self.rightMotor.setVelocity(wr)
+
   def move(self, v, w):
     """Set linear and angular velocities."""
     r = 0.1953 / 2
@@ -88,6 +89,10 @@ class PioneerRobot:
     self.leftMotor.setVelocity(wl)
     self.rightMotor.setVelocity(wr)
 
+  def stop(self):
+    """Stop the robot."""
+    self.move(0,0)
+    
 class PioneerKinect:
   """Proxy to Kinect camera in Webots."""
 
