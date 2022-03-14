@@ -63,6 +63,16 @@ class PioneerRobot:
       self.laser.enable(__basicTimeStep__)
     self.kinect = PioneerKinect()
     
+  def getSonar(self, rear=False):
+    d = []
+    if rear:
+      n = 16
+    else:
+      n = 8
+    for i in range(n):
+      d.append(self.sonar[i].getValue())
+    return d
+    
   def getPose(self):
     """Return pose of (x,y,theta) the robot."""
     if self.__compass__ is None or self.__gps__ is None:
