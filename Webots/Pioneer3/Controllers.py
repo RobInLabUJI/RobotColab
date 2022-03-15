@@ -132,6 +132,9 @@ class PioneerKinect:
     width = self.__kinectRange__.getWidth()
     image =  np.array(data).reshape(height,width)
     return image
+  
+  def setTiltPosition(self, angle):
+    self.tiltMotor.setPosition(angle)
 
 class PioneerGripper:
   """Proxy to Pioneer3 gripper in Webots."""
