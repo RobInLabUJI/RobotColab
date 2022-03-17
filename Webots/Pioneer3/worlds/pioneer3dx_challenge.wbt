@@ -1,0 +1,156 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Pioneer 3DX with its gripper (Adept Mobile Robots)"
+    "This two-wheel, two-motor differential drive robot has in addition a rear caster wheel"
+    "It is programmed to perform a simple obstacle avoidance behavior based on the values sensed by its 16 sonars"
+  ]
+  title "Pioneer 3DX with gripper"
+  basicTimeStep 10
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  fieldOfView 0.660595
+  orientation -0.169497116053352 -0.9266309359007888 -0.33559772985111913 2.6948812294663975
+  position -2.2393903051295423 7.613772557654836 -7.293989338371957
+  follow "Pioneer 3-DX"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 8 8
+  floorTileSize 1 1
+  floorAppearance Parquetry {
+    type "dark strip"
+  }
+  wallHeight 0.4
+}
+DEF PIONEER_3DX Pioneer3dx {
+  hidden position_0_0 -0.003644392014325889
+  hidden position_0_1 -2.1677882182191182e-10
+  hidden position_0_2 -1.4595202065569023e-10
+  hidden translation_1 3.5640002696025234e-10 -0.0011905068030913513 0.19184390265536694
+  hidden rotation_1 -1.037966486319915e-05 -0.999999999946131 -2.193687331190938e-08 0.00364441059978654
+  hidden position_1_0 -2.125021618756668
+  hidden translation_2 0 -0.0521014 0.012843
+  hidden rotation_2 -1 0 0 2.125021618756668
+  hidden translation_4 -0.16499999998950687 -9.707520542459697e-05 -5.314459675837264e-07
+  hidden rotation_4 -1 0 0 0
+  hidden translation_9 0.16503200001049106 -9.707882197915113e-05 -5.31342540234565e-07
+  hidden rotation_9 -1 0 0 0
+  hidden translation_29 0 0.05 0
+  hidden position_32_0 6.876411453006828e-05
+  hidden translation_33 -2.2792878695554464e-12 -6.887351929181368e-05 -0.042499870777016835
+  hidden rotation_33 -0.9999999999998427 5.571489671935981e-07 -6.82150801762981e-08 5.039503733571412e-07
+  hidden position_33_0 0.06500002616226891
+  hidden position_33_1 0.06500002615892299
+  hidden translation_34 -0.08700002616138561 0 -0.02
+  hidden rotation_34 0 1 0 0
+  hidden translation_35 0.08700002615923307 0 -0.02
+  hidden rotation_35 0 1 0 0
+  translation 2.9158322508468126 0.09629136491270904 -0.5459349483699142
+  rotation 0.25091347993126906 -0.9679169334528946 0.013387887209161656 0.1100755906529624
+  controller "<extern>"
+  synchronization FALSE
+  extensionSlot [
+    Kinect {
+      translation 0 0.15 -0.14
+      rotation 1 0 0 -0.261795307179586
+    }
+    DEF GRIPPER_BASE Pioneer3Gripper {
+      translation 0 0.026 -0.135
+    }
+  ]
+}
+Ball {
+  translation 0.4360250028974869 0.07997302249991574 2.709411327196803
+  rotation -0.04839999314531194 0.9985343122551764 0.024221228552977727 -0.27113696401918536
+  name "ball1"
+  color 0.0784314 0.137255 1
+  radius 0.08
+}
+Ball {
+  translation -1 0.07997302249999937 1.3300432042164356
+  rotation 1 0 0 0.0012776734630213892
+  name "ball2"
+  color 1 0.137255 0.0784314
+  radius 0.08
+}
+Ball {
+  translation 0 0.0799730224999993 1.1600704154767634
+  rotation 1 0 0 0.001335138952249376
+  name "ball3"
+  color 1 0 1
+  radius 0.08
+}
+Ball {
+  translation -2.1801836930206004 0.07997302249999007 1.5800427105631554
+  rotation 0.21704478446717745 0.004026895855890028 0.976153341256056 0.005024191240696605
+  name "ball4"
+  color 1 1 0
+  radius 0.08
+}
+Ball {
+  translation -1.788208556516534 0.07997302249983443 3.069497372186797
+  rotation 0.026226536331528064 0.9982971088792569 0.05210615314306056 0.3533962244392993
+  name "ball5"
+  color 0 1 1
+  radius 0.08
+}
+SolidBox {
+  translation 3 0.001 3
+  name "target"
+  size 2.1 0.001 2
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+TexturedBoxShape {
+  size 8 0.001 8
+  textureUrl [
+    "/home/ecervera/Escriptori/RobotColab/Webots/Pioneer3/protos/textures/tiles_robocup.png"
+  ]
+  textureMapping "metric"
+  faceColor 1 1 1
+  frontFace FALSE
+  backFace FALSE
+  leftFace FALSE
+  rightFace FALSE
+  bottomFace FALSE
+}
+SolidBox {
+  translation 1.95 0.005 3
+  name "border0"
+  size 0.01 0.01 2
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+}
+SolidBox {
+  translation 3 0.005 2
+  name "border1"
+  size 2.1 0.01 0.01
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+}
+SolidBox {
+  translation 1 0.2 0
+  name "middle wall"
+  size 6 0.4 0.01
+  appearance PBRAppearance {
+    baseColor 0.2 0.2 0.2
+    roughness 0.5
+    metalness 0
+  }
+}
