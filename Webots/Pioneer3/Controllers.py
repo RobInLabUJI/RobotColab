@@ -8,8 +8,10 @@ __basicTimeStep__ = 10
 
 def step(ms=__basicTimeStep__):
   global __robot__
+  global __stop__
+  __stop__ = False
   try:
-    while __robot__.step(ms) != -1:
+    while __robot__.step(ms) != -1 and not __stop__:
       pass
   except NameError:
     pass
@@ -62,6 +64,15 @@ class PioneerRobot:
     if not self.laser is None:
       self.laser.enable(__basicTimeStep__)
     self.kinect = PioneerKinect()
+    self.gripper = PioneerGripper()
+    
+  def disconnect(self):
+    global __robot__
+    global __step__
+    global __stop__
+    __stop__ = True
+    __step__.join()
+    __robot__ = None
     
   def getSonar(self, rear=False):
     d = []
