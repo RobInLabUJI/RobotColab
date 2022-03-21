@@ -1,5 +1,9 @@
 from BrickPi import *
 import time
+import picamera
+import picamera.array
+import cv2
+import numpy as np
 
 def limita(velocitat):
     velocitat = abs(velocitat)
@@ -67,3 +71,36 @@ class BrickPiRobot:
     def distancia(self):
         BrickPiUpdateValues()
         return BrickPi.Sensor[PORT_3]
+
+    def camera_on(self):
+        self.camera = picamera.PiCamera()
+        self.camera.resolution = (640, 480)
+        time.sleep(1)
+        self.stream = picamera.array.PiRGBArray(self.camera)
+        
+    def imatge(self):
+        self.stream.truncate(0)
+        self.camera.capture(self.stream, format='rgb')
+        image = self.stream.array
+        return image
+        
+    def camera_off(self):
+        self.camera.close()
+        
+    def detecta_foc(self, img, lower=200, upper=255):
+        # region = img[250:,:,:]
+        lower_tuple = (lower,lower,lower)
+        upper_tuple = (upper,upper,upper)
+        mask = cv2.inRange(img, lower_tuple, upper_tuple)
+        _, cnt, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if cnt:
+            cnt.sort(key=cv2.contourArea)
+            x, y, w, h = cv2.boundingRect( np.vstack(tuple(cnt)) )
+            if w>1 and h>1:
+                x += w/2
+                y += h/2
+                return x, y, w, h
+            else:
+                return None, None, None, None
+        else:
+            return None, None, None, None
