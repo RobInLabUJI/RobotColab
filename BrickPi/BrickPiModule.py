@@ -17,6 +17,7 @@ class BrickPiRobot:
     def __init__(self):
         BrickPiSetup()
         BrickPi.MotorEnable[PORT_A] = 1
+        BrickPi.MotorEnable[PORT_C] = 1
         BrickPi.MotorEnable[PORT_D] = 1
         BrickPi.SensorType[PORT_1] = TYPE_SENSOR_TOUCH
         BrickPi.SensorType[PORT_2] = TYPE_SENSOR_LIGHT_ON
@@ -24,12 +25,24 @@ class BrickPiRobot:
         BrickPiSetupSensors()
         self._updated_ = False
     
+    def velocitat_rodes(self, v_esquerra=0, v_dreta=0):
+        if v_esquerra < -100:
+            v_esquerra = -100
+        elif v_esquerra > 100:
+            v_esquerra = 100
+        if v_dreta < -100:
+            v_dreta = -100
+        elif v_dreta > 100:
+            v_dreta = 100
+        BrickPi.MotorSpeed[PORT_A] = v_esquerra
+        BrickPi.MotorSpeed[PORT_D] = v_dreta
+        BrickPiUpdateValues()
+        
     def avant(self, velocitat=50):
         velocitat = limita(velocitat)
         BrickPi.MotorSpeed[PORT_A] = velocitat
         BrickPi.MotorSpeed[PORT_D] = velocitat
         BrickPiUpdateValues()
-        self._updated_ = True
         
     def arrere(self, velocitat=50):
         velocitat = limita(velocitat)
@@ -52,7 +65,6 @@ class BrickPiRobot:
     def pausa(self, t=1):
         for i in range(int(t*10)):
             BrickPiUpdateValues()
-            self._updated_ = True
             time.sleep(0.1)
             
     def para(self):
@@ -104,3 +116,11 @@ class BrickPiRobot:
                 return None, None, None, None
         else:
             return None, None, None, None
+        
+    def ventilador_on(self, velocitat=255):
+        BrickPi.MotorSpeed[PORT_C] = velocitat
+        BrickPiUpdateValues()
+
+    def ventilador_off(self):
+        BrickPi.MotorSpeed[PORT_C] = 0
+        BrickPiUpdateValues()
