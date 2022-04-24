@@ -156,25 +156,34 @@ class PioneerGripper:
     self.__liftMotor__ = __robot__.getDevice("lift motor")
     self.__leftFingerMotor__ = __robot__.getDevice("left finger motor")
     self.__rightFingerMotor__ = __robot__.getDevice("right finger motor")
-    self.__leftFingerMotor__.setVelocity(0.1)
-    self.__rightFingerMotor__.setVelocity(0.1)
-    self.__liftMotor__.setVelocity(0.1)
+    if not self.__leftFingerMotor__ is None: 
+        self.__leftFingerMotor__.setVelocity(0.1)
+    if not self.__rightFingerMotor__ is None: 
+        self.__rightFingerMotor__.setVelocity(0.1)
+    if not self.__liftMotor__ is None: 
+        self.__liftMotor__.setVelocity(0.1)
 
   def up(self):
     """Move gripper up."""
-    self.__liftMotor__.setPosition(0)
+    if not self.__liftMotor__ is None: 
+        self.__liftMotor__.setPosition(0)
 
   def down(self):
     """Move gripper down."""
-    self.__liftMotor__.setPosition(0.05)
+    if not self.__liftMotor__ is None: 
+        self.__liftMotor__.setPosition(0.05)
 
   def open(self):
     """Open gripper."""
-    self.__leftFingerMotor__.setPosition(0.1)
-    self.__rightFingerMotor__.setPosition(0.1)
+    if not self.__leftFingerMotor__ is None: 
+        self.__leftFingerMotor__.setPosition(0.1)
+    if not self.__rightFingerMotor__ is None: 
+        self.__rightFingerMotor__.setPosition(0.1)
 
   def close(self, position=0.065):
     """Close gripper."""
-    self.__leftFingerMotor__.setPosition(position)
-    self.__rightFingerMotor__.setPosition(position)
+    if not self.__leftFingerMotor__ is None: 
+        self.__leftFingerMotor__.setPosition(position)
+    if not self.__rightFingerMotor__ is None: 
+        self.__rightFingerMotor__.setPosition(position)
 
