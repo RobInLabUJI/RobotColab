@@ -7,4 +7,4 @@ export ROS_HOSTNAME=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/
 export ROS_MASTER_URI=http://$ROS_HOSTNAME:11311
 export PATH=$PATH:/home/ubuntu/.local/bin
 
-roslaunch turtlebot3_bringup turtlebot3_robot.launch &
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
