@@ -31,6 +31,7 @@ class TurtleBot3Robot(Node):
     self.s = np.sin(a)
     
     self.publisher_ = self.create_publisher(geometry_msgs.msg.Twist, '/cmd_vel', 10)
+    self.scan = None
     
     rclpy.spin_once(self)
 
