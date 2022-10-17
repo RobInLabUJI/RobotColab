@@ -35,11 +35,11 @@ class TurtleBot3Robot:
     self.v_ = 0
     self.w_ = 0
 
-  def turnLeft(self, w=0.1):
+  def turnLeft(self, w=1):
     self.v_ = 0
     self.w_ = abs(w)
 
-  def turnRight(self, w=0.1):
+  def turnRight(self, w=1):
     self.v_ = 0
     self.w_ = -abs(w)
 
