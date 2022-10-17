@@ -31,6 +31,10 @@ class TurtleBot3Robot:
     self.v_ = abs(v)
     self.w_ = 0
 
+  def backward(self, v=0.1):
+    self.v_ = -abs(v)
+    self.w_ = 0
+
   def stop(self):
     self.v_ = 0
     self.w_ = 0
