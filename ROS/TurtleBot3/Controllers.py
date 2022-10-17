@@ -24,8 +24,26 @@ class TurtleBot3Robot:
     self.s = np.sin(a)
     self.bridge = CvBridge()
     self.imgSub = rospy.Subscriber('/usb_cam/image_raw', sensor_msgs.msg.Image, self.imgCallback)
+    self.v_ = 0
+    self.w_ = 0
 
-  def move(self, v, w):
+  def forward(self, v=0.1):
+    self.v_ = abs(v)
+    self.w_ = 0
+
+  def stop(self):
+    self.v_ = 0
+    self.w_ = 0
+
+  def turnLeft(self, w=0.1):
+    self.v_ = 0
+    self.w_ = abs(w)
+
+  def turnRight(self, w=0.1):
+    self.v_ = 0
+    self.w_ = -abs(w)
+
+  def move_(self, v, w):
     twist = geometry_msgs.msg.Twist()
     twist.linear.x = v
     twist.angular.z = w
@@ -39,6 +57,7 @@ class TurtleBot3Robot:
     self.y = data.pose.pose.position.y
     self.w = data.pose.pose.orientation.w
     self.z = data.pose.pose.orientation.z
+    self.move_(self.v_, self.w_)
 
   def imgCallback(self, data):
     try:
