@@ -7,4 +7,4 @@ export ROS_HOSTNAME=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/
 export ROS_MASTER_URI=http://$ROS_HOSTNAME:11311
 export PATH=$PATH:/home/pi/.local/bin
 
-roslaunch /home/pi/RobotColab/ROS/Pioneer3/p2os_driver.launch
+roslaunch /home/pi/RobotColab/ROS/Pioneer3/pioneer.launch
