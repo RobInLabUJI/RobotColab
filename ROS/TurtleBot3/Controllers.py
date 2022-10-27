@@ -6,6 +6,7 @@ import sensor_msgs.msg
 from cv_bridge import CvBridge, CvBridgeError
 
 import numpy as np
+import cv2
 
 def sleep(t):
   """Sleep t seconds in ROS time."""
@@ -23,7 +24,7 @@ class TurtleBot3Robot:
     self.c = np.cos(a)
     self.s = np.sin(a)
     self.bridge = CvBridge()
-    self.imgSub = rospy.Subscriber('/usb_cam/image_raw', sensor_msgs.msg.Image, self.imgCallback)
+    self.imgSub = rospy.Subscriber('/raspicam_node/image/compressed', sensor_msgs.msg.CompressedImage, self.imgCallback)
 
   def move(self, v, w):
     twist = geometry_msgs.msg.Twist()
@@ -42,7 +43,10 @@ class TurtleBot3Robot:
 
   def imgCallback(self, data):
     try:
-      self.cv_image = self.bridge.imgmsg_to_cv2(data, "rgb8")
+      #self.cv_image = self.bridge.imgmsg_to_cv2(data, "rgb8")
+      np_arr = np.fromstring(data.data, np.uint8)
+      bgr_image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+      self.cv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB)
     except CvBridgeError as e:
       pass
 
