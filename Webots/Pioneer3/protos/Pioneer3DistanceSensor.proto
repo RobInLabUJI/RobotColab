@@ -7,7 +7,8 @@ PROTO Pioneer3DistanceSensor [
   field SFVec3f translation 0 0.137 0
   field SFRotation rotation 0 1 0 0
   field SFString name "so"
-  field SFString type "sonar"
+  field SFString type "laser"
+  field SFFloat  aperture 0.01
 ]
 {
   DistanceSensor {
@@ -16,6 +17,7 @@ PROTO Pioneer3DistanceSensor [
     name IS name
     model "Pioneer3 distance sensor"
     type IS type
+    aperture IS aperture
     children [
       DEF BLACK_BODY_SHAPE Shape {
         appearance PBRAppearance {
