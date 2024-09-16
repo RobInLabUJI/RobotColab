@@ -1,18 +1,24 @@
-#VRML_SIM R2021a utf8
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+
 WorldInfo {
   info [
     "Pioneer 3DX (Adept Mobile Robots)"
     "This two-wheel, two-motor differential drive robot has in addition a rear caster wheel"
     "It is programmed to perform a simple obstacle avoidance behavior based on the values sensed by its 16 sonars"
   ]
-  title "Pioneer 3-DX"
-  basicTimeStep 10
-  coordinateSystem "NUE"
+  title "Pioneer 3-DX with blinking LEDs moving according to a Braitenberg rule"
+  basicTimeStep 8
 }
 Viewpoint {
   fieldOfView 0.660595
-  orientation -0.5732437624806188 0.8020054003041222 0.16786579955455028 0.708586155738549
-  position 1.6759648125204945 1.5038762450715868 2.7254535291116673
+  orientation -0.3267664900591728 0.1784182184714775 0.9281113081370533 2.2035204342955454
+  position 3.7727916496495206 -5.702119129062062 5.934883183330183
   follow "Pioneer 3-DX"
 }
 TexturedBackground {
@@ -27,7 +33,7 @@ RectangleArena {
   wallAppearance PBRAppearance {
     baseColorMap ImageTexture {
       url [
-        "textures/red_brick_wall.jpg"
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/red_brick_wall.jpg"
       ]
     }
     roughness 1
@@ -38,31 +44,29 @@ RectangleArena {
   }
 }
 CardboardBox {
-  translation -1.48831 0.3 0.352735
-  rotation 1 0 0 1.5708
-  size 0.3 0.3 0.6
+  translation -1.48831 -0.352735 0.15
+  size 0.3 0.6 0.3
 }
 DEF PIONEER_3DX Pioneer3dx {
-  hidden position_0_0 -1.989820598651193e-10
-  hidden position_0_1 4.13197321464176e-07
-  hidden position_0_2 4.131177083909756e-07
-  hidden rotation_1 -0.9999902964694141 -0.004404375043176754 -9.191024094981357e-05 1.1542389828584842e-07
-  hidden position_1_0 -0.028440340019082275
-  hidden rotation_2 -1 0 0 0.02844034001907657
-  hidden rotation_4 -1 0 0 4.129530924722863e-07
-  hidden rotation_9 -1 0 0 4.129530924722863e-07
-  translation 1.6052399084356014e-07 0.0967492330913017 0.016154939552439525
-  rotation 1.2059759248043212e-07 0.9998722952225569 -0.015981027700423717 -3.141585284160638
+  hidden position_0_0 -6.507299237575554
+  hidden position_0_1 60.89394587301484
+  hidden position_0_2 49.45461079623503
+  hidden linearVelocity_0 -9.050952821957339e-13 -1.4096331696430282e-11 -3.6099371799568125e-14
+  hidden angularVelocity_0 5.132640486425865e-13 -7.665803999287569e-14 1.001630136400244e-11
+  hidden rotation_1 -0.4912957164080793 0.6158849364803084 0.6158849438456169 4.054912692029544
+  hidden position_1_0 -139.92483352613738
+  hidden linearVelocity_1 -2.305568671302543e-12 -1.3167997845874888e-11 -7.790025435898645e-14
+  hidden angularVelocity_1 6.2256250478649244e-12 3.507303689812281e-11 -9.305947130991726e-10
+  hidden rotation_2 -0.9999999999999999 0 0 1.6947567681864744
+  hidden linearVelocity_2 -1.071951272975364e-11 -9.746643834077279e-12 -6.0763118924567716e-15
+  hidden angularVelocity_2 9.83253283889295e-10 -3.612775727058584e-10 -9.394526531679135e-10
+  hidden rotation_4 0.7010919326055994 -0.701091981746166 0.13015427448447064 3.4004460104716947
+  hidden linearVelocity_4 -1.7813556798804958e-12 -1.559571696850593e-11 -7.396134878661612e-16
+  hidden angularVelocity_4 3.4652472595988555e-12 -5.56937068967326e-13 1.0013688764925855e-11
+  hidden rotation_9 0.680493259301774 -0.6804932834642825 -0.2717679436667393 2.6108747129052525
+  hidden linearVelocity_9 -1.2509682562624215e-12 -1.2339365746363158e-11 -4.191143097908247e-15
+  hidden angularVelocity_9 2.8419681977353273e-12 -4.557889536666187e-13 1.0013699439161699e-11
+  translation -0.016328969615930722 0.36950447063634273 0.09682918884872152
+  rotation 0.018908799029088375 -0.022235821010702678 0.9995739220204065 1.4097954418667236
   controller "<extern>"
-  synchronization FALSE
-  extensionSlot [
-    HokuyoUrg04lx {
-      translation 0 0.2 -0.07
-    }
-    Compass {
-      rotation 0 1 0 3.14159265
-    }
-    GPS {
-    }
-  ]
 }
