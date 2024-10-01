@@ -1,5 +1,6 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.qos import ReliabilityPolicy, QoSProfile
 import nav_msgs.msg
 import sensor_msgs.msg
 import geometry_msgs.msg
@@ -24,8 +25,7 @@ class TurtleBot3Robot(Node):
         sensor_msgs.msg.LaserScan,
         '/scan',
         self.scanCallback,
-        10)
-    self.scanSubscription
+        QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
     a = np.linspace(0,360,360,False)*np.pi/180
     self.c = np.cos(a)
     self.s = np.sin(a)
