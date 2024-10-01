@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export ROS_DOMAIN_ID=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}' | cut -d . -f 4)
-source /opt/ros/foxy/setup.bash
+source /opt/ros/humble/setup.bash
 export PATH=$PATH:/home/ubuntu/.local/bin
 
 cd /home/ubuntu/RobotColab/ROS2 && \
