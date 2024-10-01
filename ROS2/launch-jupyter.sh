@@ -7,5 +7,6 @@ source /opt/ros/humble/setup.bash
 cd /home/ubuntu/RobotColab/ROS2 && \
 jupyter notebook --NotebookApp.allow_origin='https://colab.research.google.com' \
                  --port=8888 --NotebookApp.port_retries=0 --no-browser \
-                 --NotebookApp.token='' --ip 0.0.0.0
+                 --NotebookApp.token='' --ip 0.0.0.0 \
+                 --NotebookApp.disable_check_xsrf=True
 
