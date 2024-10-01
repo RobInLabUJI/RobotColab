@@ -91,7 +91,7 @@ class PioneerRobot:
     vx, vy, vz = self.__compass__.getValues()
     theta = math.atan2(vz, vx)
     px, py, pz = self.__gps__.getValues()
-    return pz, px, theta
+    return px, py, theta
 
   def getEncoders(self):
     return (self.leftWheelSensor.getValue(), self.rightWheelSensor.getValue())
