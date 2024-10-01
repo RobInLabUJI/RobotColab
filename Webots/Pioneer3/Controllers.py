@@ -89,7 +89,9 @@ class PioneerRobot:
     if self.__compass__ is None or self.__gps__ is None:
       return None
     vx, vy, vz = self.__compass__.getValues()
-    theta = math.atan2(vz, vx)
+    theta = -math.atan2(vy, vx) + math.pi/2
+    if theta > math.pi:
+      theta -= 2*math.pi
     px, py, pz = self.__gps__.getValues()
     return px, py, theta
 
