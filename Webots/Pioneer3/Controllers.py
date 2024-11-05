@@ -156,8 +156,8 @@ class PioneerGripper:
     """Create proxy and enable motors."""
     global __robot__
     self.__liftMotor__ = __robot__.getDevice("lift motor")
-    self.__leftFingerMotor__ = __robot__.getDevice("left finger motor")
-    self.__rightFingerMotor__ = __robot__.getDevice("right finger motor")
+    self.__leftFingerMotor__ = __robot__.getDevice("finger motor::left")
+    self.__rightFingerMotor__ = __robot__.getDevice("finger motor::right")
     if not self.__leftFingerMotor__ is None: 
         self.__leftFingerMotor__.setVelocity(0.1)
     if not self.__rightFingerMotor__ is None: 
