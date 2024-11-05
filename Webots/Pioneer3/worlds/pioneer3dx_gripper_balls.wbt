@@ -112,3 +112,56 @@ Ball {
   color 0 1 1
   radius 0.08
 }
+
+SolidBox {
+  translation -0.5 0 0
+  name "target"
+  size 1 1 0.001
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+  enableBoundingObject FALSE
+  castShadows FALSE
+}
+SolidBox {
+  translation -0.5 0.5 0.005
+  name "border0"
+  size 1 0.01 0.01
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+}
+SolidBox {
+  translation -1 0 0.005
+  name "border1"
+  size 0.01 1 0.01
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+}
+SolidBox {
+  translation -0.5 -0.5 0.005
+  name "border0"
+  size 1 0.01 0.01
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+}
+SolidBox {
+  translation 0 0 0.005
+  name "border1"
+  size 0.01 1 0.01
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+}
