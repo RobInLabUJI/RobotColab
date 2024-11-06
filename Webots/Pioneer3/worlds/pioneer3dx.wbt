@@ -2,9 +2,10 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/CardboardBox.proto"
-EXTERNPROTO "../protos/Pioneer3dx.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/devices/hokuyo/protos/HokuyoUrg04lx.proto"
 
 WorldInfo {
   info [
@@ -12,13 +13,13 @@ WorldInfo {
     "This two-wheel, two-motor differential drive robot has in addition a rear caster wheel"
     "It is programmed to perform a simple obstacle avoidance behavior based on the values sensed by its 16 sonars"
   ]
-  title "Pioneer 3-DX with blinking LEDs moving according to a Braitenberg rule"
-  basicTimeStep 8
+  title "Pioneer 3-DX"
+  basicTimeStep 10
 }
 Viewpoint {
   fieldOfView 0.660595
-  orientation -0.3267664900591728 0.1784182184714775 0.9281113081370533 2.2035204342955454
-  position 3.7727916496495206 -5.702119129062062 5.934883183330183
+  orientation -0.16786579955455028 0.5732437624806188 0.8020054003041222 0.708586155738549
+  position -2.7254535291116673 -1.6759648125204945 1.5038762450715866
   follow "Pioneer 3-DX"
 }
 TexturedBackground {
@@ -26,6 +27,7 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 RectangleArena {
+  rotation 0 0 1 1.5707963267948966
   floorSize 6 6
   floorTileSize 2 2
   wallThickness 0.1
@@ -33,7 +35,7 @@ RectangleArena {
   wallAppearance PBRAppearance {
     baseColorMap ImageTexture {
       url [
-        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/red_brick_wall.jpg"
+        "textures/red_brick_wall.jpg"
       ]
     }
     roughness 1
@@ -44,27 +46,23 @@ RectangleArena {
   }
 }
 CardboardBox {
-  translation -1.48831 -0.352735 0.15
-  size 0.3 0.6 0.3
+  translation -0.352735 1.48831 0.3
+  rotation 0 1 0 -1.570796
+  size 0.6 0.3 0.3
 }
-DEF PIONEER_3DX Pioneer3dx {
-  hidden position_0_0 -6.507299237575554
-  hidden position_0_1 60.89394587301484
-  hidden position_0_2 49.45461079623503
-  hidden linearVelocity_0 -9.050952821957339e-13 -1.4096331696430282e-11 -3.6099371799568125e-14
-  hidden angularVelocity_0 5.132640486425865e-13 -7.665803999287569e-14 1.001630136400244e-11
-  hidden rotation_1 -0.4912957164080793 0.6158849364803084 0.6158849438456169 4.054912692029544
-  hidden position_1_0 -139.92483352613738
-  hidden rotation_2 -0.9999999999999999 0 0 1.6947567681864744
-  hidden rotation_4 0.7010919326055994 -0.7010919817461663 0.13015427448447076 3.4004460104716947
-  hidden rotation_9 0.680493259301774 -0.6804932834642825 -0.2717679436667394 2.6108747129052525
-  translation -0.016328969615930722 0.36950447063634273 0.09682918884872152
-  rotation 0.018908799029088375 -0.022235821010702678 0.9995739220204065 1.4097954418667236
+Pioneer3dx {
+  translation -0.0161549 0 0.0967492
+  rotation 0.015981027700423717 0 0.9998722952225569 -3.141585284160638
   controller "<extern>"
+  synchronization FALSE
   extensionSlot [
-    Compass {
-    }
     GPS {
+    }
+    Compass {
+      rotation 0 0 1 3.14159265
+    }
+    HokuyoUrg04lx {
+      translation 0.07 0 0.2
     }
   ]
 }
