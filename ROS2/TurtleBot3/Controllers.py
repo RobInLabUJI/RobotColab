@@ -7,6 +7,10 @@ import geometry_msgs.msg
 import math
 import numpy as np
 
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge
+import cv2
+
 class TurtleBot3Robot(Node):
   """Proxy to TurtleBot 3 robot in ROS 2."""
 
@@ -32,7 +36,15 @@ class TurtleBot3Robot(Node):
     
     self.publisher_ = self.create_publisher(geometry_msgs.msg.Twist, '/cmd_vel', 10)
     self.scan = None
-    
+
+    self.camSubscription = self.create_subscription(
+        Image,
+        '/camera/image_raw',
+        self.cameraCallback,
+        10)
+    self.camSubscription  # prevent unused variable warning
+    self.bridge = CvBridge()
+
     rclpy.spin_once(self)
 
   def move(self, v, w):
@@ -51,8 +63,8 @@ class TurtleBot3Robot(Node):
     self.w = data.pose.pose.orientation.w
     self.z = data.pose.pose.orientation.z
 
-  def imgCallback(self, data):
-    pass
+  def cameraCallback(self, data):
+    self.cv_image = self.bridge.imgmsg_to_cv2(data, desired_encoding='rgb8')
 
   def getPose(self):
     rclpy.spin_once(self)
@@ -71,5 +83,6 @@ class TurtleBot3Robot(Node):
     return x, y
 
   def getImage(self):
+    rclpy.spin_once(self)
     return self.cv_image
 
