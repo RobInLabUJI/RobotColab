@@ -1,121 +1,86 @@
 #VRML_SIM R2023b utf8
 
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/balls/protos/Ball.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/devices/microsoft/protos/Kinect.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3Gripper.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/CardboardBox.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/lights/protos/FloorLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/Ball.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 
 WorldInfo {
   info [
-    "Pioneer 3DX robot (Adept Mobile Robots)"
-    "This two-wheel two-motor, differential wheel robot is equipped with a Microsoft kinect"
-    "It is programmed to perform a simple obstacle avoidance behavior based on sensed values situated on a medium-height line of the kinect display"
+    "Pioneer 3DX with its gripper (Adept Mobile Robots)"
+    "This two-wheel, two-motor differential drive robot has in addition a rear caster wheel"
+    "It is programmed to perform a simple obstacle avoidance behavior based on the values sensed by its 16 sonars"
   ]
-  title "Pioneer 3DX equipped with a Microsoft kinect"
+  title "Pioneer 3DX with gripper"
+  basicTimeStep 10
 }
 Viewpoint {
   fieldOfView 0.660595
-  orientation -0.1619134252008754 0.8180751224685925 0.551848835042458 0.6887354808883986
-  position -9.897592073647651 -4.392777060806968 7.238407501422867
+  orientation 0.12621794831758765 0.03335558634190153 -0.9914415940348108 2.81354
+  position 2.2995072834652333 0.406554744677088 0.9067473580424809
+  follow "Pioneer 3-DX"
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  floorSize 8 8
+  rotation 0.0 0.0 1.0 1.5707963267948966
+  floorSize 4 4
   floorTileSize 1 1
-  floorAppearance Parquetry {
-  }
   wallHeight 0.4
 }
 DEF PIONEER_3DX Pioneer3dx {
-  translation -3.2 1.33 0.0935
-  rotation -0.0112 -0.0579 -1 0.385
+  translation -0.19928467707733397 -0.4915630176329117 0.09629136565351477
+  rotation -0.013819086000600493 0.020257292273993404 -0.9996992922733486 -1.1976553575621784
   controller "<extern>"
+  synchronization FALSE
   extensionSlot [
     Kinect {
-      translation 0 0 0.15
-      width 150
-      height 100
+      translation 0.14 0 0.15
+      rotation 0 -1 0 -0.261795307179586
     }
     DEF GRIPPER_BASE Pioneer3Gripper {
       translation 0.135 0 0.026
     }
   ]
 }
-CardboardBox {
-  translation -0.36307 2.01063 0.3
-}
-CardboardBox {
-  translation -0.382041 -2.17641 0.3
-  name "cardboard box(1)"
-}
-FloorLight {
-  translation 0.351337 -0.184194 0
-  pointLightCastShadows TRUE
-}
-WoodenBox {
-  translation 3.28359 -3.08068 0.3
-}
-WoodenBox {
-  translation 1.87377 3.11289 0.3
-  name "wooden box(1)"
-}
-WoodenBox {
-  translation 0.188964 -1.55421 0.3
-  name "wooden box(2)"
-}
-WoodenBox {
-  translation -2.77958 3.05296 0.3
-  name "wooden box(3)"
-}
-
 Ball {
-  translation -2 -1 0.07997302250000003
+  translation -1 0 0.07997302250000003
   name "ball1"
   color 0.0784314 0.137255 1
   radius 0.08
 }
-
 Ball {
-  translation -2 1 0.07997302250000003
+  translation 0 1 0.07997302250000003
   name "ball2"
   color 1 0.137255 0.0784314
   radius 0.08
 }
-
 Ball {
-  translation -2 0 0.07997302250000003
+  translation 1 0 0.07997302250000003
   name "ball3"
   color 1 0 1
   radius 0.08
 }
-
 Ball {
-  translation -2.5 -1 0.07997302250000003
+  translation 0.5 -1 0.07997302250000003
   name "ball4"
   color 1 1 0
   radius 0.08
 }
-
 Ball {
-  translation -2.25 -1.25 0.07997302250000003
+  translation -1.25 -1.25 0.07997302250000003
   name "ball5"
   color 0 1 1
   radius 0.08
 }
-
 SolidBox {
-  translation -0.5 0 0
+  translation -1.5 1.5 0
   name "target"
   size 1 1 0.001
   appearance PBRAppearance {
@@ -127,7 +92,7 @@ SolidBox {
   castShadows FALSE
 }
 SolidBox {
-  translation -0.5 0.5 0.005
+  translation -1.5 1 0.005
   name "border0"
   size 1 0.01 0.01
   appearance PBRAppearance {
@@ -137,28 +102,8 @@ SolidBox {
   }
 }
 SolidBox {
-  translation -1 0 0.005
+  translation -1 1.5 0.005
   name "border1"
-  size 0.01 1 0.01
-  appearance PBRAppearance {
-    baseColor 0 1 0
-    roughness 0.5
-    metalness 0
-  }
-}
-SolidBox {
-  translation -0.5 -0.5 0.005
-  name "border2"
-  size 1 0.01 0.01
-  appearance PBRAppearance {
-    baseColor 0 1 0
-    roughness 0.5
-    metalness 0
-  }
-}
-SolidBox {
-  translation 0 0 0.005
-  name "border3"
   size 0.01 1 0.01
   appearance PBRAppearance {
     baseColor 0 1 0

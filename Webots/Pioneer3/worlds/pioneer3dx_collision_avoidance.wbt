@@ -1,4 +1,13 @@
-#VRML_SIM R2021a utf8
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/lights/protos/FloorLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+
 WorldInfo {
   info [
     "Pioneer 3DX (Adept Mobile Robots)"
@@ -7,51 +16,62 @@ WorldInfo {
   ]
   title "Pioneer 3-DX"
   basicTimeStep 10
-  coordinateSystem "NUE"
 }
 Viewpoint {
   fieldOfView 0.660595
-  orientation -0.35740379605526057 -0.8701214457283707 -0.33933935263812226 1.7257581886625526
-  position -17.928106801610685 16.519918436116555 -0.9032733328738459
+  orientation 0.33933935263812226 0.35740379605526057 -0.8701214457283707 1.7257581886625526
+  position 0.9032733328738459 17.928106801610685 16.519918436116555
 }
 TexturedBackground {
 }
 RectangleArena {
+  rotation 0 0 1 1.5707963267948966
   floorSize 12 12
   floorTileSize 2 2
   wallHeight 0.4
 }
 DEF PIONEER_3DX Pioneer3dx {
-  translation -0.613659 0.0975 0.0464224
-  rotation 0 -1 0 5.12323
+  translation -0.0464224 0.613659 0.0975
+  rotation 0 0 -1 5.12323
   controller "<extern>"
   synchronization FALSE
+  extensionSlot [
+    GPS {
+    }
+    Compass {
+      rotation 0 0 1 3.14159265
+    }
+  ]
 }
 CardboardBox {
-  translation -0.201269 0.3 -4.94642
+  translation 4.94642 0.201269 0.3
 }
 CardboardBox {
-  translation 0.225428 0.3 5.08162
+  translation -5.08162 -0.225428 0.3
   name "cardboard box(1)"
 }
 FloorLight {
-  translation 0.351337 0 0.184194
+  translation -0.184194 -0.351337 0
   pointLightIntensity 10
   pointLightCastShadows TRUE
 }
 WoodenBox {
-  translation 4.01933 0.3 3.31136
+  translation -3.31136 -4.01933 0.3
+  rotation 0 0 1 1.570796
 }
 WoodenBox {
-  translation 3.98789 0.3 -3.08066
+  translation 3.08066 -3.98789 0.3
+  rotation 0 0 1 1.570796
   name "wooden box(1)"
 }
 WoodenBox {
-  translation -4.22157 0.3 3.54663
+  translation -3.54663 4.22157 0.3
+  rotation 0 0 1 1.570796
   name "wooden box(2)"
 }
 WoodenBox {
-  translation -4.21065 0.3 -2.89465
+  translation 2.89465 4.21065 0.3
+  rotation 0 0 1 1.570796
   name "wooden box(3)"
 }
 TexturedBackgroundLight {
