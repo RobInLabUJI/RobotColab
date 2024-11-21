@@ -84,5 +84,8 @@ class TurtleBot3Robot(Node):
 
   def getImage(self):
     rclpy.spin_once(self)
-    return self.cv_image
-
+    try:
+      return self.cv_image
+    except:
+      print("Image not yet available. Retry in a few seconds!")
+      return None
