@@ -76,7 +76,7 @@ Ball {
   radius 0.08
 }
 SolidBox {
-  translation -3 -3 0.001
+  translation -3 -3 0.002
   name "target"
   size 2 2.1 0.001
   appearance PBRAppearance {
